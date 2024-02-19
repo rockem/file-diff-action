@@ -1,0 +1,8 @@
+{
+  "name": "file-diff-action",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rockem/file-diff-action.git",
+  "author": "Eli Segal <eli.segal@dynamicyield.com>",
+  "license": "MIT"
+}
