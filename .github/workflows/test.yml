@@ -1,0 +1,28 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@4
+
+      - name: Create git diff
+        run: |
+          cat "## change\n new log" > test-changelog.md
+          git commit test-changelog.md
+
+      - name: File Diff
+        id: file-diff
+        uses: ./
+        file-path: test-changelog.md
+
+      - name: Verify Additions
+        if: ${{ file-diff.output.additions.content != "new log" }}
+        run: exit 1
